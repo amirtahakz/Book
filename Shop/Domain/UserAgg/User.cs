@@ -44,8 +44,8 @@ namespace Domain.UserAgg
         public string PhoneNumber { get; private set; }
         public string Email { get; private set; }
         public string Password { get; private set; }
-        public string AvatarName { get; set; }
-        public bool IsActive { get; set; }
+        public string AvatarName { get; private set; }
+        public bool IsActive { get; private set; }
 
         public Gender Gender { get; private set; }
         public List<UserRole> Roles { get; }
@@ -105,7 +105,7 @@ namespace Domain.UserAgg
 
 
             oldAddress.Edit(address.Shire, address.City, address.PostalCode , 
-                address.PostalAddress , address.PhoneNumber , address.FullName, address.NationalCode);
+                address.PostalAddress , address.PhoneNumber , address.Name , address.Family, address.NationalCode);
         }
 
         public void SetActiveAddress(Guid addressId)

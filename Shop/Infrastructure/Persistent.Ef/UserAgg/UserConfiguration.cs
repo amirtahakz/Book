@@ -22,7 +22,8 @@ namespace Infrastructure.Persistent.Ef.UserAgg
 
             builder.Property(b => b.Name)
                 .IsRequired(false)
-                .HasMaxLength(80);
+
+               .HasMaxLength(80);
 
             builder.Property(b => b.Family)
                 .IsRequired(false)
@@ -31,7 +32,6 @@ namespace Infrastructure.Persistent.Ef.UserAgg
             builder.Property(b => b.Password)
                 .IsRequired()
                 .HasMaxLength(50);
-
 
 
             builder.OwnsMany(b => b.Tokens, option =>
@@ -62,8 +62,12 @@ namespace Infrastructure.Persistent.Ef.UserAgg
                 option.Property(b => b.City)
                     .IsRequired().HasMaxLength(100);
 
-                option.Property(b => b.FullName)
+                option.Property(b => b.Name)
                    .IsRequired().HasMaxLength(50);
+
+                option.Property(b => b.Family)
+                    .IsRequired().HasMaxLength(50);
+
 
 
                 option.Property(b => b.NationalCode)
@@ -76,8 +80,7 @@ namespace Infrastructure.Persistent.Ef.UserAgg
                 {
                     config.Property(b => b.Value)
                         .HasColumnName("PhoneNumber")
-                        .IsRequired()
-                        .HasMaxLength(11);
+                        .IsRequired().HasMaxLength(11);
                 });
             });
 

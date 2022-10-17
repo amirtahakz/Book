@@ -15,7 +15,7 @@ namespace Domain.UserAgg
         {
 
         }
-        public Wallet(long price, string description, bool isFinally, WalletType type)
+        public Wallet(int price, string description, bool isFinally, WalletType type)
         {
             if (price < 500)
                 throw new InvalidDomainDataException();
@@ -28,7 +28,7 @@ namespace Domain.UserAgg
                 FinallyDate = DateTime.Now;
         }
 
-        public long Price { get; private set; }
+        public int Price { get; private set; }
         public WalletType Type { get; private set; }
         public string Description { get; private set; }
         public Guid UserId { get; internal set; }

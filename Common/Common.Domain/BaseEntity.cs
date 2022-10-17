@@ -12,7 +12,7 @@ namespace Common.Domain
         public DateTime CreationDate { get; private set; }
         public BaseEntity()
         {
-            CreationDate = new DateTime();
+            CreationDate = DateTime.Now;
             Id = Guid.NewGuid();
         }
     }

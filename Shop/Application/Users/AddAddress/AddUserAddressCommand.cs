@@ -10,7 +10,7 @@ namespace Application.Users.AddAddress
 {
     public class AddUserAddressCommand : IBaseCommand
     {
-        public AddUserAddressCommand(Guid userId, string shire, string city, string postalCode, string postalAddress, PhoneNumber phoneNumber, string nationalCode, string fullName)
+        public AddUserAddressCommand(Guid userId, string shire, string city, string postalCode, string postalAddress, PhoneNumber phoneNumber, string nationalCode, string name , string family)
         {
             UserId = userId;
             Shire = shire;
@@ -19,7 +19,8 @@ namespace Application.Users.AddAddress
             PostalAddress = postalAddress;
             PhoneNumber = phoneNumber;
             NationalCode = nationalCode;
-            FullName = fullName;
+            Name = name;
+            Family = family;
         }
         public Guid UserId { get; set; }
         public string Shire { get; private set; }
@@ -27,7 +28,8 @@ namespace Application.Users.AddAddress
         public string PostalCode { get; private set; }
         public string PostalAddress { get; private set; }
         public PhoneNumber PhoneNumber { get; private set; }
-        public string FullName { get; private set; }
+        public string Name { get; private set; }
+        public string Family { get; private set; }
         public string NationalCode { get; private set; }
 
     }

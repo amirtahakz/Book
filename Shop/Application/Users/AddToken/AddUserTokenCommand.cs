@@ -18,12 +18,12 @@ namespace Application.Users.AddToken
             RefreshTokenExpireDate = refreshTokenExpireDate;
             Device = device;
         }
-        public Guid UserId { get; }
-        public string HashJwtToken { get; }
-        public string HashRefreshToken { get; }
-        public DateTime TokenExpireDate { get; }
-        public DateTime RefreshTokenExpireDate { get; }
-        public string Device { get; }
+        public Guid UserId { get; private set; }
+        public string HashJwtToken { get; private set; }
+        public string HashRefreshToken { get; private set; }
+        public DateTime TokenExpireDate { get; private set; }
+        public DateTime RefreshTokenExpireDate { get; private set; }
+        public string Device { get; private set; }
 
     }
 }

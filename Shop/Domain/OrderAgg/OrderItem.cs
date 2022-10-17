@@ -14,7 +14,7 @@ namespace Domain.OrderAgg
         {
 
         }
-        public OrderItem(Guid inventoryId, int count, long price)
+        public OrderItem(Guid inventoryId, int count, int price)
         {
             CountGuard(count);
             PriceGuard(price);
@@ -26,8 +26,8 @@ namespace Domain.OrderAgg
         public Guid OrderId { get; internal set; }
         public Guid InventoryId { get; private set; }
         public int Count { get; private set; }
-        public long Price { get; private set; }
-        public long TotalPrice => Price*Count;
+        public int Price { get; private set; }
+        public int TotalPrice => Price*Count;
 
 
         public void IncreaseCount(int count)
@@ -58,7 +58,7 @@ namespace Domain.OrderAgg
             Price = newPrice;
         }
 
-        public void PriceGuard(long newPrice)
+        public void PriceGuard(int newPrice)
         {
             if (newPrice < 1)
                 throw new InvalidDomainDataException("مبلغ کالا نامعتبر است");

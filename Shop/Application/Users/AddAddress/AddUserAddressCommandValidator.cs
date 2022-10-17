@@ -14,8 +14,11 @@ namespace Application.Users.AddAddress
             RuleFor(f => f.Shire)
                 .NotEmpty().WithMessage(ValidationMessages.required("استان"));
 
-            RuleFor(f => f.FullName)
-                .NotEmpty().WithMessage(ValidationMessages.required("نام و نام خانوادگی"));
+            RuleFor(f => f.Name)
+                .NotEmpty().WithMessage(ValidationMessages.required("نام"));
+
+            RuleFor(f => f.Family)
+                .NotEmpty().WithMessage(ValidationMessages.required(" نام خانوادگی"));
 
             RuleFor(f => f.NationalCode)
                 .NotEmpty().WithMessage(ValidationMessages.required("کدملی"))

@@ -1,5 +1,6 @@
 ﻿using Common.Application;
 using Common.Application.SecurityUtil;
+using Common.Domain.ValueObjects;
 using Domain.UserAgg;
 using Domain.UserAgg.Repository;
 using Domain.UserAgg.Services;

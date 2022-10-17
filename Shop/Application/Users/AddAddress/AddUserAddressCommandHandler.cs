@@ -20,7 +20,7 @@ namespace Application.Users.AddAddress
                 return OperationResult.NotFound();
 
             var address = new UserAddress(request.Shire, request.City, request.PostalCode ,
-                request.PostalAddress , request.PhoneNumber , request.FullName , request.NationalCode);
+                request.PostalAddress , request.PhoneNumber , request.Name ,request.Family , request.NationalCode);
             user.AddAddress(address);
             await _repository.Save();
             return OperationResult.Success();

@@ -13,11 +13,14 @@
     <Folder Include="Orders\GetById\" />
     <Folder Include="Orders\GetCurrent\" />
     <Folder Include="Orders\DTOs\" />
-    <Folder Include="Users\" />
-    <Folder Include="SiteEntities\" />
-    <Folder Include="Sellers\" />
-    <Folder Include="Roles\" />
-    <Folder Include="Products\" />
+    <Folder Include="Products\DTOs\" />
+    <Folder Include="Products\GetById\" />
+    <Folder Include="Products\GetBySlug\" />
+    <Folder Include="Products\GetByFilter\" />
+    <Folder Include="Products\GetForShop\" />
+    <Folder Include="Roles\GetById\" />
+    <Folder Include="Roles\GetList\" />
+    <Folder Include="Roles\DTOs\" />
   </ItemGroup>
 
   <ItemGroup>

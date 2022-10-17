@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Domain.ValueObjects;
 
 namespace Domain.OrderAgg
 {
@@ -26,7 +27,7 @@ namespace Domain.OrderAgg
             NationalCode = nationalCode;
         }
 
-        public long OrderId { get; internal set; }
+        public Guid OrderId { get; internal set; }
         public string Shire { get; private set; }
         public string City { get; private set; }
         public string PostalCode { get; private set; }

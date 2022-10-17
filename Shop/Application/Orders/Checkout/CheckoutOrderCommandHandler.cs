@@ -1,4 +1,5 @@
 ﻿using Common.Application;
+using Common.Domain.ValueObjects;
 using Domain.OrderAgg.Repository;
 using Domain.OrderAgg.ValueObjects;
 using Domain.OrderAgg;

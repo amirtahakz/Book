@@ -32,7 +32,7 @@ namespace Domain.OrderAgg
         public List<OrderItem> Items { get; private set; }
         public DateTime? LastUpdate { get; set; }
         public OrderDiscount? Discount { get; private set; }
-        public long TotalPrice
+        public int TotalPrice
         {
             get
             {

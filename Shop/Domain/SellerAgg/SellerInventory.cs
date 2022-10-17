@@ -9,7 +9,7 @@ namespace Domain.SellerAgg
         {
 
         }
-        public SellerInventory(Guid productId, int count, long price, int? discountPercentage = null)
+        public SellerInventory(Guid productId, int count, int price, int? discountPercentage = null)
         {
             if (price < 1 || count < 0)
                 throw new InvalidDomainDataException();
@@ -23,7 +23,7 @@ namespace Domain.SellerAgg
         public Guid SellerId { get; internal set; }
         public Guid ProductId { get; private set; }
         public int Count { get; private set; }
-        public long Price { get; private set; }
+        public int Price { get; private set; }
         public int? DiscountPercentage { get; private set; }
 
         public void Edit(int count, int price, int? discountPercentage = null)

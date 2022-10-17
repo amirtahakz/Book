@@ -12,18 +12,18 @@ using System.Threading.Tasks;
 
 namespace Application.Categories.Create
 {
-    public class EditCategoryCommandHandler : IBaseCommandHandler<EditCategoryCommand, Guid>
+    public class CreateCategoryCommandHandler : IBaseCommandHandler<CreateCategoryCommand, Guid>
     {
         private readonly ICategoryRepository _repository;
         private readonly ICategoryDomainService _domainService;
 
-        public EditCategoryCommandHandler(ICategoryRepository repository, ICategoryDomainService domainService)
+        public CreateCategoryCommandHandler(ICategoryRepository repository, ICategoryDomainService domainService)
         {
             _repository = repository;
             _domainService = domainService;
         }
 
-        public async Task<OperationResult<Guid>> Handle(EditCategoryCommand request, CancellationToken cancellationToken)
+        public async Task<OperationResult<Guid>> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
             var category = new Category(request.Slug , request.Title , request.SeoData , _domainService);
 

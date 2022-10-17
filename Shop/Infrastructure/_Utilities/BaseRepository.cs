@@ -4,6 +4,7 @@ using Common.Domain.Repository;
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Persistent.Ef;
 
+
 namespace Infrastructure._Utilities;
 
 public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity

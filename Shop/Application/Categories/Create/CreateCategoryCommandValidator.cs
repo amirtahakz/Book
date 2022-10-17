@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Application.Categories.Create
 {
-    public class EditCategoryCommandValidator: AbstractValidator<EditCategoryCommand>
+    public class CreateCategoryCommandValidator: AbstractValidator<CreateCategoryCommand>
     {
-        public EditCategoryCommandValidator()
+        public CreateCategoryCommandValidator()
         {
             RuleFor(r => r.Title)
                 .NotNull().NotEmpty().WithMessage(ValidationMessages.required("عنوان"));

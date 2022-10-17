@@ -37,7 +37,7 @@ namespace Domain.ProductAgg
         public string ImageName { get; private set; }
         public string Description { get; private set; }
         public Guid CategoryId { get; private set; }
-        public Guid SubCategoryId { get; private set; }
+        public Guid? SubCategoryId { get; private set; }
         public Guid? SecondarySubCategoryId { get; private set; }
         public string Slug { get; private set; }
         public SeoData SeoData { get; private set; }

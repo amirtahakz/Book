@@ -20,7 +20,7 @@ namespace Application.Users.EditAddress
                 return OperationResult.NotFound();
 
             var address = new UserAddress(request.Shire, request.City, request.PostalCode, request.PostalAddress,
-                request.PhoneNumber, request.FullName , request.NationalCode);
+                request.PhoneNumber, request.Name , request.Family , request.NationalCode);
 
             user.EditAddress(address, request.Id);
             await _repository.Save();

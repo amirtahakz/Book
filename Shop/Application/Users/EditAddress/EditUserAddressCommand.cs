@@ -10,7 +10,7 @@ namespace Application.Users.EditAddress
 {
     public class EditUserAddressCommand : IBaseCommand
     {
-        public EditUserAddressCommand(string shire, string city, string postalCode, string postalAddress, PhoneNumber phoneNumber, string fullName,
+        public EditUserAddressCommand(string shire, string city, string postalCode, string postalAddress, PhoneNumber phoneNumber, string name, string family,
             string nationalCode, Guid userId, Guid id)
         {
             Shire = shire;
@@ -18,7 +18,8 @@ namespace Application.Users.EditAddress
             PostalCode = postalCode;
             PostalAddress = postalAddress;
             PhoneNumber = phoneNumber;
-            FullName = fullName;
+            Name = name;
+            Family = family;
             NationalCode = nationalCode;
             UserId = userId;
             Id = id;
@@ -31,7 +32,8 @@ namespace Application.Users.EditAddress
         public string PostalCode { get; private set; }
         public string PostalAddress { get; private set; }
         public PhoneNumber PhoneNumber { get; private set; }
-        public string FullName { get; private set; }
+        public string Name { get; private set; }
+        public string Family { get; private set; }
         public string NationalCode { get; private set; }
 
     }
