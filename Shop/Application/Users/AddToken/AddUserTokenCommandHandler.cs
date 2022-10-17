@@ -20,6 +20,7 @@ namespace Application.Users.AddToken
 
 
             user.AddToken(request.HashJwtToken, request.HashRefreshToken, request.TokenExpireDate, request.RefreshTokenExpireDate, request.Device);
+
             await _repository.Save();
             return OperationResult.Success();
         }

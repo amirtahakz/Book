@@ -22,7 +22,6 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : 
     public async Task<TEntity?> GetTracking(Guid id)
     {
         return await Context.Set<TEntity>().AsTracking().FirstOrDefaultAsync(t => t.Id.Equals(id));
-
     }
     public async Task AddAsync(TEntity entity)
     {

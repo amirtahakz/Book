@@ -26,11 +26,6 @@ internal class OrderConfiguration : IEntityTypeConfiguration<Order>
             option.HasKey(b => b.Id);
             option.ToTable("Addresses", "order");
 
-            //option.OwnsOne(c => c.PhoneNumber, config =>
-            //{
-            //    config.Property(b => b.Value)
-            //        .HasColumnName("PhoneNumber");
-            //});
 
             option.Property(b => b.Shire)
                 .IsRequired().HasMaxLength(100);

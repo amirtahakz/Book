@@ -11,5 +11,5 @@ using System.Threading.Tasks;
 
 namespace Application.Categories.Edit
 {
-    public record EditCategoryCommand(Guid Id, string Slug, string Title, SeoData SeoData, ICategoryDomainService Service) : IBaseCommand;
+    public record EditCategoryCommand(Guid Id, string Slug, string Title, SeoData SeoData) : IBaseCommand;
 }

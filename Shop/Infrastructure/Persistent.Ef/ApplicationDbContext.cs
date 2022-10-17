@@ -32,7 +32,6 @@ namespace Infrastructure.Persistent.Ef
         public DbSet<Product> Products { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Seller> Sellers { get; set; }
-        public DbSet<SellerInventory> Inventories { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Banner> Banners { get; set; }
         public DbSet<User> Users { get; set; }
@@ -72,6 +71,16 @@ namespace Infrastructure.Persistent.Ef
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
             base.OnModelCreating(modelBuilder);
+foreach (var item in modelBuilder.Model.GetEntityTypes())
+            {
+                var p = item.FindPrimaryKey().Properties.FirstOrDefault(i => i.ValueGenerated != Microsoft.EntityFrameworkCore.Metadata.ValueGenerated.Never);
+                if (p != null)
+                {
+                    p.ValueGenerated = Microsoft.EntityFrameworkCore.Metadata.ValueGenerated.Never;
+                }
+
+            }
+            
         }
     }
 

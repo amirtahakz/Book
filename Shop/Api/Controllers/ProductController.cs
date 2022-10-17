@@ -14,7 +14,7 @@ using Query.Products.DTOs;
 
 namespace Api.Controllers;
 
-[PermissionChecker(Permission.CRUD_Product)]
+//[PermissionChecker(Permission.CRUD_Product)]
 public class ProductController : ApiController
 {
     private readonly IProductFacade _productFacade;

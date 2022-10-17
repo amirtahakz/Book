@@ -18,7 +18,7 @@ using Query.Categories.DTOs;
 namespace Api.Controllers;
 
 
-[PermissionChecker(Permission.Category_Management)]
+//[PermissionChecker(Permission.Category_Management)]
 public class CategoryController : Common.AspNetCore.ApiController
 {
     private readonly ICategoryFacade _categoryFacade;
