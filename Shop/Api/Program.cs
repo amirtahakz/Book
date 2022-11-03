@@ -33,7 +33,7 @@ builder.Services.AddControllers()
     });
 builder.Services.AddDistributedRedisCache(option =>
 {
-    option.Configuration = "localhost:44372";
+    option.Configuration = "localhost:6379";
 });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(option =>
@@ -79,9 +79,13 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
+
 app.UseCors("ShopApi");
+
 app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.UseApiCustomExceptionHandler();

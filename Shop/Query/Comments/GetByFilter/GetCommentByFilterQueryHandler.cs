@@ -21,7 +21,7 @@ public class GetCommentByFilterQueryHandler : IQueryHandler<GetCommentByFilterQu
 
 
         if (@params.ProductId != null)
-            result = result.Where(r => r.UserId == @params.ProductId);
+            result = result.Where(r => r.ProductId == @params.ProductId);
 
         if (@params.CommentStatus != null)
             result = result.Where(r => r.Status == @params.CommentStatus);

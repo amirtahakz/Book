@@ -14,7 +14,7 @@ using Query.Products.DTOs;
 
 namespace Api.Controllers;
 
-//[PermissionChecker(Permission.CRUD_Product)]
+[PermissionChecker(Permission.CRUD_Product)]
 public class ProductController : ApiController
 {
     private readonly IProductFacade _productFacade;
@@ -64,20 +64,18 @@ public class ProductController : ApiController
     [HttpPost]
     public async Task<ApiResult> CreateProduct([FromForm] CreateProductViewModel viewModel)
     {
-        var result = await _productFacade.CreateProduct(new CreateProductCommand(viewModel.Title , viewModel.ImageFile ,viewModel.Description , viewModel.CategoryId , viewModel.SubCategoryId ,
-            viewModel.SecondarySubCategoryId ,viewModel.Slug , viewModel.SeoData.Map() , viewModel.GetSpecification()));
-        //var result = await _productFacade.CreateProduct(new CreateProductCommand()
-        //{
-        //    SeoData = viewModel.SeoData.Map(),
-        //    CategoryId = viewModel.CategoryId,
-        //    Description = viewModel.Description,
-        //    ImageFile = viewModel.ImageFile,
-        //    SecondarySubCategoryId = viewModel.SecondarySubCategoryId,
-        //    Slug = viewModel.Slug,
-        //    Specifications = viewModel.GetSpecification(),
-        //    SubCategoryId = viewModel.SubCategoryId,
-        //    Title = viewModel.Title
-        //});
+        var result = await _productFacade.CreateProduct(new CreateProductCommand()
+        {
+            SeoData = viewModel.SeoData.Map(),
+            CategoryId = viewModel.CategoryId,
+            Description = viewModel.Description,
+            ImageFile = viewModel.ImageFile,
+            SecondarySubCategoryId = viewModel.SecondarySubCategoryId,
+            Slug = viewModel.Slug,
+            Specifications = viewModel.GetSpecification(),
+            SubCategoryId = viewModel.SubCategoryId,
+            Title = viewModel.Title
+        });
         return CommandResult(result);
     }
 

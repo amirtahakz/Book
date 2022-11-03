@@ -26,7 +26,7 @@ internal class CategoryFacade : ICategoryFacade
 
     public async Task<OperationResult<Guid>> AddChild(AddChildCategoryCommand command)
     {
-        //await _cache.RemoveAsync(CacheKeys.Categories);
+        await _cache.RemoveAsync(CacheKeys.Categories);
         return await _mediator.Send(command);
     }
 
@@ -38,7 +38,7 @@ internal class CategoryFacade : ICategoryFacade
 
     public async Task<OperationResult<Guid>> Create(CreateCategoryCommand command)
     {
-        //await _cache.RemoveAsync(CacheKeys.Categories);
+        await _cache.RemoveAsync(CacheKeys.Categories);
         return await _mediator.Send(command);
     }
 

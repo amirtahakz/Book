@@ -10,7 +10,7 @@ using Query.SiteEntities.DTOs;
 namespace Api.Controllers;
 
 
-[Authorize]
+//[Authorize]
 public class ShippingMethodController : ApiController
 {
     private readonly IShippingMethodFacade _facade;

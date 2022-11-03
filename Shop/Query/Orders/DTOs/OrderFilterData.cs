@@ -11,6 +11,6 @@ public class OrderFilterData : BaseDto
     public string? Shire { get; set; }
     public string? City { get; set; }
     public string? ShippingType { get; set; }
-    public long TotalPrice { get; set; }
+    public int TotalPrice { get; set; }
     public int TotalItemCount { get; set; }
 }

@@ -11,15 +11,15 @@ namespace Application.SiteEntities.Banners.Create
 {
     public class CreateBannerCommand : IBaseCommand
     {
-        public CreateBannerCommand(string link, IFormFile imageFile, BannerPosition position)
-        {
-            Link = link;
-            ImageFile = imageFile;
-            Position = position;
-        }
+        //public CreateBannerCommand(string link, IFormFile imageFile, BannerPosition position)
+        //{
+        //    Link = link;
+        //    ImageFile = imageFile;
+        //    Position = position;
+        //}
 
-        public string Link { get; private set; }
-        public IFormFile ImageFile { get; private set; }
-        public BannerPosition Position { get; private set; }
+        public string Link { get; set; }
+        public IFormFile ImageFile { get; set; }
+        public BannerPosition Position { get; set; }
     }
 }

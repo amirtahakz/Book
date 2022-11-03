@@ -66,7 +66,7 @@ public static class ProductMapper
             {
                 Id = s.Id,
                 Slug = s.Slug,
-                ParentId = (Guid)s.ParentId,
+                ParentId = s.ParentId,
                 SeoData = s.SeoData,
                 Title = s.Title
             }).ToListAsync();
@@ -79,7 +79,7 @@ public static class ProductMapper
                 {
                     Id = s.Id,
                     Slug = s.Slug,
-                    ParentId = (Guid)s.ParentId,
+                    ParentId = s.ParentId,
                     SeoData = s.SeoData,
                     Title = s.Title
                 })

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.OrderAgg.Events;
 
 namespace Domain.OrderAgg
 {
@@ -108,7 +109,7 @@ namespace Domain.OrderAgg
         {
             Status = OrderStatus.Finally;
             LastUpdate = DateTime.Now;
-            //AddDomainEvent(new OrderFinalized(Id));
+            AddDomainEvent(new OrderFinalized(Id));
         }
         public void ChangeStatus(OrderStatus status)
         {

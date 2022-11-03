@@ -71,6 +71,7 @@ internal class UserFacade : IUserFacade
         {
             return _mediator.Send(new GetUserByIdQuery(userId));
         });
+        //return await _mediator.Send(new GetUserByIdQuery(userId));
     }
 
     public async Task<UserTokenDto?> GetUserTokenByRefreshToken(string refreshToken)

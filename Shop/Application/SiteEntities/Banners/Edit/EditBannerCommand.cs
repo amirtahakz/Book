@@ -11,17 +11,17 @@ namespace Application.SiteEntities.Banners.Edit
 {
     public class EditBannerCommand : IBaseCommand
     {
-        public EditBannerCommand(Guid id, string link, IFormFile? imageFile, BannerPosition position)
-        {
-            Id = id;
-            Link = link;
-            ImageFile = imageFile;
-            Position = position;
-        }
+        //public EditBannerCommand(Guid id, string link, IFormFile? imageFile, BannerPosition position)
+        //{
+        //    Id = id;
+        //    Link = link;
+        //    ImageFile = imageFile;
+        //    Position = position;
+        //}
 
-        public Guid Id { get; private set; }
-        public string Link { get; private set; }
-        public IFormFile? ImageFile { get; private set; }
-        public BannerPosition Position { get; private set; }
+        public Guid Id { get; set; }
+        public string Link { get; set; }
+        public IFormFile? ImageFile { get; set; }
+        public BannerPosition Position { get; set; }
     }
 }

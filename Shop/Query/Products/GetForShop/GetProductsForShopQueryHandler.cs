@@ -30,13 +30,12 @@ internal class GetProductsForShopQueryHandler : IQueryHandler<GetProductsForShop
         CategoryDto? selectedCategory = null;
         if (!string.IsNullOrWhiteSpace(@params.CategorySlug))
         {
-            var category =
-                await _context.Categories.FirstOrDefaultAsync(f => f.Slug == @params.CategorySlug, cancellationToken);
+            var category = await _context.Categories.FirstOrDefaultAsync(f => f.Slug == @params.CategorySlug, cancellationToken);
 
             if (category != null)
             {
-                conditions += @$" and (A.CategoryId={category.Id} or A.SubCategoryId={category.Id}
-                              or A.SecondarySubCategoryId={category.Id})";
+                conditions += @$" and (A.CategoryId='{category.Id}' or A.SubCategoryId='{category.Id}'
+                              or A.SecondarySubCategoryId='{category.Id}')";
                 selectedCategory = category.Map();
             }
         }
@@ -56,29 +55,27 @@ internal class GetProductsForShopQueryHandler : IQueryHandler<GetProductsForShop
             conditions += " and A.DiscountPercentage>0";
             inventoryOrderBy = "i.DiscountPercentage Desc";
         }
-
         switch (@params.SearchOrderBy)
         {
             case ProductSearchOrderBy.Cheapest:
-            {
-                orderBy = "A.Price Asc";
-                break;
-            }
+                {
+                    orderBy = "A.Price Asc";
+                    break;
+                }
             case ProductSearchOrderBy.Expensive:
-            {
-                orderBy = "A.Price Desc";
-                break;
-            }
+                {
+                    orderBy = "A.Price Desc";
+                    break;
+                }
             case ProductSearchOrderBy.Latest:
-            {
-                orderBy = "A.Id Desc";
-                break;
-            }
+                {
+                    orderBy = "A.Id Desc";
+                    break;
+                }
             default:
                 orderBy = "p.Id";
                 break;
         }
-
         using var sqlConnection = _dapperContext.CreateConnection();
 
         var skip = (@params.PageId - 1) * @params.Take;
@@ -89,7 +86,7 @@ internal class GetProductsForShopQueryHandler : IQueryHandler<GetProductsForShop
             From {_dapperContext.Products} p
             left join {_dapperContext.Inventories} i on p.Id=i.ProductId
             left join {_dapperContext.Sellers} s on i.SellerId=s.Id)A
-            WHERE  A.RN = 1 and A.Status=@status  {conditions}";
+            WHERE  A.RN = 1 and A.Status=@status {conditions}";
 
 
         var resultSql = @$"SELECT A.Slug,A.Id ,A.Title,A.Price,A.InventoryId,A.DiscountPercentage,A.ImageName

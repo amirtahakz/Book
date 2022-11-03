@@ -14,7 +14,7 @@ using Query.Users.DTOs;
 
 namespace Api.Controllers;
 
-//[Authorize]
+[Authorize]
 public class UserAddressController : ApiController
 {
     private readonly IUserAddressFacade _userAddress;

@@ -20,8 +20,9 @@ public class GetProductBySlugQueryHandler : IQueryHandler<GetProductBySlugQuery,
         var res = await _context.Products.FirstOrDefaultAsync(p => p.Slug == request.Slug, cancellationToken);
 
         var model = res.Map();
-        if (res == null)
+        if (model == null)
             return null;
+
         await model.SetCategories(_context);
         return model;
     }

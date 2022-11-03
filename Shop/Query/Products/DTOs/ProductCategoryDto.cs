@@ -9,5 +9,5 @@ public class ProductCategoryDto : BaseDto
     public string Slug { get; set; }
     public SeoData SeoData { get; set; }
     public Guid Id { get; set; }
-    public Guid ParentId { get; set; }
+    public Guid? ParentId { get; set; }
 }

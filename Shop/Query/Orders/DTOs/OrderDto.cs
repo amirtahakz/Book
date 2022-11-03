@@ -17,7 +17,7 @@ public class OrderDto : BaseDto
     public DateTime? LastUpdate { get; set; }
 
 
-    public long TotalPrice
+    public int TotalPrice
     {
         get
         {

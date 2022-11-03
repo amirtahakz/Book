@@ -19,8 +19,11 @@ public class GetProductByIdQueryHandler : IQueryHandler<GetProductByIdQuery, Pro
         var res = await _context.Products.FirstOrDefaultAsync(p=>p.Id == request.Id ,cancellationToken);
 
         var model = res.Map();
-        if (res == null)
+
+
+        if (model == null)
             return null;
+
         await model.SetCategories(_context);
         return model;
     }
