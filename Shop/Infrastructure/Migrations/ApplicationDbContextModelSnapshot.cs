@@ -25,7 +25,6 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.CategoryAgg.Category", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreationDate")
@@ -56,7 +55,6 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.CommentAgg.Comment", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreationDate")
@@ -86,7 +84,6 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.OrderAgg.Order", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreationDate")
@@ -111,7 +108,6 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.ProductAgg.Product", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("CategoryId")
@@ -156,7 +152,6 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.RoleAgg.Role", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreationDate")
@@ -175,7 +170,6 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.SellerAgg.Seller", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreationDate")
@@ -209,7 +203,6 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.SiteEntities.Banner", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreationDate")
@@ -236,7 +229,6 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.SiteEntities.ShippingMethod", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Cost")
@@ -258,7 +250,6 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.SiteEntities.Slider", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreationDate")
@@ -287,7 +278,6 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.UserAgg.User", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("AvatarName")
@@ -393,7 +383,6 @@ namespace Infrastructure.Migrations
                     b.OwnsOne("Domain.OrderAgg.OrderAddress", "OrderAddress", b1 =>
                         {
                             b1.Property<Guid>("Id")
-                                .ValueGeneratedOnAdd()
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<string>("City")
@@ -447,16 +436,13 @@ namespace Infrastructure.Migrations
 
                             b1.ToTable("Addresses", "order");
 
-                            b1.WithOwner("Order")
+                            b1.WithOwner()
                                 .HasForeignKey("OrderId");
-
-                            b1.Navigation("Order");
                         });
 
                     b.OwnsMany("Domain.OrderAgg.OrderItem", "Items", b1 =>
                         {
                             b1.Property<Guid>("Id")
-                                .ValueGeneratedOnAdd()
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<int>("Count")
@@ -585,7 +571,6 @@ namespace Infrastructure.Migrations
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<Guid>("Id")
-                                .ValueGeneratedOnAdd()
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<DateTime>("CreationDate")
@@ -613,7 +598,6 @@ namespace Infrastructure.Migrations
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<Guid>("Id")
-                                .ValueGeneratedOnAdd()
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<DateTime>("CreationDate")
@@ -652,7 +636,6 @@ namespace Infrastructure.Migrations
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<Guid>("Id")
-                                .ValueGeneratedOnAdd()
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<DateTime>("CreationDate")
@@ -677,7 +660,6 @@ namespace Infrastructure.Migrations
                     b.OwnsMany("Domain.SellerAgg.SellerInventory", "Inventories", b1 =>
                         {
                             b1.Property<Guid>("Id")
-                                .ValueGeneratedOnAdd()
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<int>("Count")
@@ -721,7 +703,6 @@ namespace Infrastructure.Migrations
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<Guid>("Id")
-                                .ValueGeneratedOnAdd()
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<bool>("ActiveAddress")
@@ -805,7 +786,6 @@ namespace Infrastructure.Migrations
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<Guid>("Id")
-                                .ValueGeneratedOnAdd()
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<DateTime>("CreationDate")
@@ -827,7 +807,6 @@ namespace Infrastructure.Migrations
                     b.OwnsMany("Domain.UserAgg.UserToken", "Tokens", b1 =>
                         {
                             b1.Property<Guid>("Id")
-                                .ValueGeneratedOnAdd()
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<DateTime>("CreationDate")
@@ -873,7 +852,6 @@ namespace Infrastructure.Migrations
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<Guid>("Id")
-                                .ValueGeneratedOnAdd()
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<DateTime>("CreationDate")

@@ -36,31 +36,59 @@ builder.Services.AddDistributedRedisCache(option =>
     option.Configuration = "localhost:6379";
 });
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(option =>
+//builder.Services.AddSwaggerGen(option =>
+//{
+//    var jwtSecurityScheme = new OpenApiSecurityScheme
+//    {
+//        Scheme = "bearer",
+//        BearerFormat = "JWT",
+//        Name = "JWT Authentication",
+//        In = ParameterLocation.Header,
+//        Type = SecuritySchemeType.Http,
+//        Description = "Enter Token",
+
+//        Reference = new OpenApiReference
+//        {
+//            Id = JwtBearerDefaults.AuthenticationScheme,
+//            Type = ReferenceType.SecurityScheme
+//        }
+//    };
+
+//    option.AddSecurityDefinition(jwtSecurityScheme.Reference.Id, jwtSecurityScheme);
+
+//    option.AddSecurityRequirement(new OpenApiSecurityRequirement
+//    {
+//        { jwtSecurityScheme, Array.Empty<string>() }
+//    });
+//});
+builder.Services.AddSwaggerGen(c =>
 {
-    var jwtSecurityScheme = new OpenApiSecurityScheme
-    {
-        Scheme = "bearer",
-        BearerFormat = "JWT",
-        Name = "JWT Authentication",
-        In = ParameterLocation.Header,
-        Type = SecuritySchemeType.Http,
-        Description = "Enter Token",
+	c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApiAuthorize", Version = "v1" });
+	c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+	{
+		Description = "Insert Your Token",
+		Name = "Authorization",
+		In = ParameterLocation.Header,
+		Type = SecuritySchemeType.Http,
+		Scheme = "Bearer",
+		BearerFormat = "JWT",
+	});
+	c.AddSecurityRequirement(new OpenApiSecurityRequirement{
+					{
+						new OpenApiSecurityScheme
+						{
+							Reference = new OpenApiReference
+							{
+								Type = ReferenceType.SecurityScheme,
+								Id = "Bearer"
+							}
+						},
+						new string[]{}
+					}
 
-        Reference = new OpenApiReference
-        {
-            Id = JwtBearerDefaults.AuthenticationScheme,
-            Type = ReferenceType.SecurityScheme
-        }
-    };
-
-    option.AddSecurityDefinition(jwtSecurityScheme.Reference.Id, jwtSecurityScheme);
-
-    option.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        { jwtSecurityScheme, Array.Empty<string>() }
-    });
+				});
 });
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.RegisterShopDependency(connectionString);
