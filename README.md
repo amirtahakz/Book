@@ -1,6 +1,6 @@
 # Book
 
-Run 
+## build status
 [![.NET core build and deployment](https://github.com/amirtahakz/Book/actions/workflows/cicd.yml/badge.svg?branch=master)](https://github.com/amirtahakz/Book/actions/workflows/cicd.yml)
 
 
