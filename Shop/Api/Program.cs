@@ -6,15 +6,14 @@ using Common.Application.FileUtil.Interfaces;
 using Common.Application.FileUtil.Services;
 using Common.AspNetCore;
 using Common.AspNetCore.Middlewares;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
 using Config;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
+var services = builder.Services;
 
-
-builder.Services.AddControllers()
+services.AddControllers()
     .ConfigureApiBehaviorOptions(option =>
     {
         option.InvalidModelStateResponseFactory = (context =>
@@ -31,12 +30,12 @@ builder.Services.AddControllers()
             return new BadRequestObjectResult(result);
         });
     });
-builder.Services.AddDistributedRedisCache(option =>
+services.AddDistributedRedisCache(option =>
 {
     option.Configuration = "localhost:6379";
 });
-builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen(option =>
+services.AddEndpointsApiExplorer();
+//services.AddSwaggerGen(option =>
 //{
 //    var jwtSecurityScheme = new OpenApiSecurityScheme
 //    {
@@ -61,43 +60,44 @@ builder.Services.AddEndpointsApiExplorer();
 //        { jwtSecurityScheme, Array.Empty<string>() }
 //    });
 //});
-builder.Services.AddSwaggerGen(c =>
+services.AddSwaggerGen(c =>
 {
-	c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApiAuthorize", Version = "v1" });
-	c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-	{
-		Description = "Insert Your Token",
-		Name = "Authorization",
-		In = ParameterLocation.Header,
-		Type = SecuritySchemeType.Http,
-		Scheme = "Bearer",
-		BearerFormat = "JWT",
-	});
-	c.AddSecurityRequirement(new OpenApiSecurityRequirement{
-					{
-						new OpenApiSecurityScheme
-						{
-							Reference = new OpenApiReference
-							{
-								Type = ReferenceType.SecurityScheme,
-								Id = "Bearer"
-							}
-						},
-						new string[]{}
-					}
-
-				});
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApiAuthorize", Version = "v1" });
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "Insert Your Token",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+    });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement{
+    {
+        new OpenApiSecurityScheme
+        {
+            Reference = new OpenApiReference
+            {
+                Type = ReferenceType.SecurityScheme,
+                Id = "Bearer"
+            }
+        },
+        new string[]{}
+    }
+    });
 });
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.RegisterShopDependency(connectionString);
-builder.Services.RegisterApiDependency(builder.Configuration);
+services.RegisterShopDependency(connectionString);
+services.RegisterApiDependency(builder.Configuration);
 
-CommonBootstrapper.Init(builder.Services);
-builder.Services.AddTransient<IFileService, FileService>();
+CommonBootstrapper.Init(services);
+services.AddTransient<IFileService, FileService>();
 
-builder.Services.AddJwtAuthentication(builder.Configuration);
+services.AddJwtAuthentication(builder.Configuration);
+
+
 
 var app = builder.Build();
 
